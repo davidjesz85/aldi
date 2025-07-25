@@ -1,0 +1,40 @@
+.main-container {
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: 0 16px;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+
+  a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    &:hover {
+      background-color: #e5e7eb; // hover gray
+      color: #111827; // darker text
+    }
+
+    &.active {
+      background-color: #10b981; // green-500
+      color: white;
+    }
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: stretch;
+
+    a {
+      text-align: center;
+    }
+  }
+}

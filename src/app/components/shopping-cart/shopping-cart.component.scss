@@ -1,0 +1,20 @@
+td {
+  height: 75px;
+}
+
+.name {
+  align-items: center;
+  display: flex;
+  gap: 5px;
+
+  &__product-image-container {
+    height: 50px;
+    position: relative;
+    width: 50px;
+
+    &__image {
+      border-radius: 5%;
+      object-fit: cover;
+    }
+  }
+}

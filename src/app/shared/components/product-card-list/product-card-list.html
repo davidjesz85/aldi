@@ -1,0 +1,47 @@
+<div class="product-card-list">
+  @for(product of products(); track product.id) {
+  <mat-card class="product-card-list__item" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>{{ product.name }}</mat-card-title>
+    </mat-card-header>
+    <div class="product-card-list__item__img-container">
+      <img
+        alt="{{ product.name }}"
+        class="product-card-list__item__img-container__img"
+        fill
+        mat-card-image
+        [priority]="product.isFirst ? '' : null"
+        ngSrc="{{ product.img }}"
+      />
+    </div>
+    <mat-card-content>
+      <p>Available amount: {{ product.availableAmount }}</p>
+      <p>Minimum order amount: {{ product.minOrderAmount }}</p>
+      <p>Price: {{ product.price | currency:'EUR' }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="product-card-list__amount">
+        <mat-form-field class="product-card-list__amount__input">
+          <input
+            [min]="product.minOrderAmount"
+            [max]="product.availableAmount"
+            [(ngModel)]="quantityControls[product.id]"
+            matInput
+            placeholder="Quantity"
+            type="number"
+          />
+        </mat-form-field>
+        <button
+          (click)="addToCart(product.id, quantityControls[product.id], product.price, product.name, product.img)"
+          [disabled]="((quantityControls[product.id] < product.minOrderAmount) && (getCartAmountSignal(product.id)() < product.minOrderAmount)) || quantityControls[product.id] > product.availableAmount || !quantityControls[product.id]"
+          matIconButton
+          type="button"
+        >
+          <mat-icon fontIcon="shopping_cart">Amount</mat-icon>
+        </button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+  }
+</div>
+

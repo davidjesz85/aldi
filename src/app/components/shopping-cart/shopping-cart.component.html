@@ -1,0 +1,55 @@
+<section aria-labelledby="cart-heading">
+  <h2 id="cart-heading">Shopping Cart</h2>
+
+  @if (shoppingCartService.shoppingCart().length) {
+  <table mat-table [dataSource]="tableData" class="mat-elevation-z8">
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Product Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Product Name</th>
+      <td mat-cell *matCellDef="let element">
+        <div class="name">
+          <div class="name__product-image-container">
+            <img
+              alt="{{ element.name }}"
+              class="name__product-image-container__image"
+              fill
+              ngSrc="{{ element.img }}"
+            />
+          </div>
+          <div class="name__text"></div>
+          {{ element.name }}
+        </div>
+      </td>
+    </ng-container>
+
+    <!-- Product Amount Column -->
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef>Amount</th>
+      <td mat-cell *matCellDef="let element">{{ element.totalAmount }}</td>
+    </ng-container>
+
+    <!-- Product Price Column -->
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef>Price</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.totalPrice | currency : 'EUR' }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  } @else {
+  <p>Your shopping cart is empty.</p>
+  }
+  <!--  Total Price -->
+  @if(shoppingCartService.calculateTotalPrice()) {
+  <p>
+    Total Price:
+    {{ shoppingCartService.calculateTotalPrice() | currency : 'EUR' }}
+  </p>
+  }
+</section>
