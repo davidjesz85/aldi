@@ -8,7 +8,8 @@ This is a simple front-end e-commerce application built with **Angular 20** usin
 - **Workspace:** Nx (monorepo, standalone)
 - **Styling:** Angular Material
 - **Testing:** Vitest
-- **State Management:** Angular Signals
+- **Component Library** Angular Material
+- **Prioritizing** Angular Signals
 
 ---
 
@@ -40,10 +41,11 @@ This is a simple front-end e-commerce application built with **Angular 20** usin
 - **AC03**: Cart page:
   - Displays total quantity and total price of added products
 
-## 📄 Additional Extra Features
+## 📄 Additional Notes
 
 - To address duplicate IDs in the API data, I introduced a remapping utility that guarantees each product has a unique ID before rendering.
 - Due to limited time, fallback support for a missing image was not included in this version.
+- Amount validation is currently enforced only through button disablement in the UI. Due to time constraints, server-side or method-level validation has not been implemented, which means the logic could be bypassed via browser developer tools.
 
 ---
 
