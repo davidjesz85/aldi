@@ -40,7 +40,6 @@ export class ProductsComponent {
       alert(`Error fetching products: ${error}`);
       console.error(error);
     } finally {
-      console.log('Products fetch FINISHED');
       this.loadingService.loadingOff();
     }
   }

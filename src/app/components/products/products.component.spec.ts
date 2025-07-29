@@ -1,4 +1,4 @@
-import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { describe, it, expect, vi } from 'vitest';
 import { ProductsComponent } from './products.component';
 import { ProductsService } from '../../services/products/products.service';

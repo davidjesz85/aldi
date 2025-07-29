@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  effect,
-  inject,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ShoppingCartService } from '../../services/shopping-cart/shopping-cart.service';
 import { MatTableModule } from '@angular/material/table';
@@ -19,12 +14,6 @@ import { ShoppingCartItem } from '../../types/shopping-cart.type';
 })
 export class ShoppingCartComponent {
   shoppingCartService = inject(ShoppingCartService);
-
-  constructor() {
-    effect(() => {
-      console.log('shoppingCart', this.shoppingCartService.shoppingCart());
-    });
-  }
 
   displayedColumns: string[] = ['name', 'amount', 'price'];
   tableData: ShoppingCartItem[] = this.shoppingCartService.shoppingCart();
