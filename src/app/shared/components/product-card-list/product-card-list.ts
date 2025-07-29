@@ -5,12 +5,7 @@ import {
   effect,
   inject,
   input,
-  linkedSignal,
-  model,
-  ModelSignal,
   OnInit,
-  signal,
-  WritableSignal,
 } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Product } from '../../../types/product.type';
@@ -25,8 +20,7 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { remapDuplicateIds } from '../../../utils/remapDuplicateIds';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShoppingCartService } from '../../../services/shopping-cart/shopping-cart.service';
 
 @Component({
