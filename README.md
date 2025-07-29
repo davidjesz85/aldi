@@ -45,6 +45,7 @@ This is a simple front-end e-commerce application built with **Angular 20** usin
 
 - To address duplicate IDs in the API data, I introduced a remapping utility that guarantees each product has a unique ID before rendering.
 - Due to limited time, fallback support for a missing image was not included in this version.
+- Error handling is basic and would require improvements for a production-grade application.
 - Amount validation is currently enforced only through button disablement in the UI. Due to time constraints, server-side or method-level validation has not been implemented, which means the logic could be bypassed via browser developer tools.
 
 ---
