@@ -12,5 +12,5 @@ import { MainNavigationComponent } from './shared/components/main-navigation/mai
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class App {
-  protected title = 'aldi';
+  protected title = 'Aldi E-Commerce Demo';
 }
