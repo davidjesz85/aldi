@@ -2,10 +2,8 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
-  effect,
   inject,
   input,
-  OnInit,
 } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Product } from '../../../types/product.type';
@@ -44,23 +42,9 @@ import { ShoppingCartService } from '../../../services/shopping-cart/shopping-ca
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
-export class ProductCardList implements OnInit {
+export class ProductCardList {
   shoppingCartService = inject(ShoppingCartService);
   productService = inject(ProductsService);
-
-  constructor() {
-    effect(() => {
-      // console.log('products', this.productService.products());
-      console.log(
-        'shoppingCart VALUE',
-        this.shoppingCartService.shoppingCart()
-      );
-    });
-  }
-
-  ngOnInit() {
-    console.log();
-  }
 
   products = input.required<Product[]>();
 

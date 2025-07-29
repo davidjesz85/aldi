@@ -17,18 +17,15 @@ export class ProductsService {
 
   async fetchProducts(): Promise<Product[]> {
     if (this.products().length > 0) {
-      console.log('ALREADY FETCHED PRODUCTS');
       return;
     }
 
     const products$ = this.http.get<Product[]>(`${this.env.apiProducts}`);
-    console.log('Fetching DONE');
     return await firstValueFrom(products$);
   }
 
   remapFetchedProducts(products: Product[]) {
     const remappedProducts = remapDuplicateIds(products);
     this.products.set(remappedProducts);
-    console.log('Products loaded successfully :', this.products());
   }
 }
