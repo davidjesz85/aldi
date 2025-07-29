@@ -33,7 +33,7 @@
         </mat-form-field>
         <button
           (click)="addToCart(product.id, quantityControls[product.id], product.price, product.name, product.img)"
-          [disabled]="((quantityControls[product.id] < product.minOrderAmount) && (getCartAmountSignal(product.id)() < product.minOrderAmount)) || quantityControls[product.id] > product.availableAmount || !quantityControls[product.id]"
+          [disabled]="((quantityControls[product.id] < product.minOrderAmount) && (getTotalAmountSignal(product.id)() < product.minOrderAmount)) || quantityControls[product.id] > product.availableAmount || !quantityControls[product.id]"
           matIconButton
           type="button"
         >

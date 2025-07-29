@@ -56,7 +56,7 @@ export class ProductCardList {
     }
   });
 
-  getCartAmountSignal(productId: string) {
+  protected getTotalAmountSignal(productId: string) {
     return computed(() => {
       const product = this.shoppingCartService
         .shoppingCart()
@@ -66,28 +66,13 @@ export class ProductCardList {
     });
   }
 
-  addToCart(
+  private updateShoppingCart(
     productId: string,
     amount: number,
     price: number,
     name: string,
     img: string
   ) {
-    this.productService.products.update((products) =>
-      products.map((product) => {
-        if (product.id === productId) {
-          this.quantityControls[productId] = undefined;
-
-          return {
-            ...product,
-            availableAmount: product.availableAmount - amount,
-          };
-        }
-
-        return product;
-      })
-    );
-
     this.shoppingCartService.shoppingCart.update((cart) => {
       const existing = cart.find((p) => p.id === productId);
 
@@ -115,7 +100,34 @@ export class ProductCardList {
         },
       ];
     });
+  }
 
-    this.getCartAmountSignal(productId);
+  private updateQuantity(productId: string, amount: number) {
+    this.productService.products.update((products) =>
+      products.map((product) => {
+        if (product.id === productId) {
+          this.quantityControls[productId] = undefined;
+
+          return {
+            ...product,
+            availableAmount: product.availableAmount - amount,
+          };
+        }
+
+        return product;
+      })
+    );
+  }
+
+  addToCart(
+    productId: string,
+    amount: number,
+    price: number,
+    name: string,
+    img: string
+  ) {
+    this.updateQuantity(productId, amount);
+    this.updateShoppingCart(productId, amount, price, name, img);
+    this.getTotalAmountSignal(productId);
   }
 }
